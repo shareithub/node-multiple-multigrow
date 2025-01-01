@@ -1,4 +1,4 @@
-NODE Multiple - MultiGrow Tesnet
+NODE Multiple - MultiGrow Testnet
 
 Start date : Januari 2025
 
