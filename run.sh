@@ -35,12 +35,26 @@ echo ""
 
 # Fungsi untuk menghentikan node dan menghapus file lama
 clean_up() {
-    echo "Stopping node..."
-    pkill -f multiple-node  # Menghentikan semua proses yang menggunakan multiple-node
-    sleep 2
+    echo "Stopping node and cleaning up processes..."
+    
+    # Menghentikan semua proses yang berkaitan dengan multiple-node, termasuk proses 'grep multiple-node'
+    sudo pkill -f multiple-node
+    
+    # Menunggu beberapa detik agar proses benar-benar berhenti
+    sleep 5
+
+    # Menampilkan status proses setelah penghentian
+    echo "Checking if processes are stopped..."
+    ps aux | grep -v grep | grep multiple-node  # Memastikan tidak ada proses multiple-node yang tertinggal
 
     echo "Removing downloaded files and old installation..."
-    rm -rf multipleforlinux.tar multipleforlinux  # Menghapus file tar dan folder hasil ekstraksi
+    # Menghapus file dan folder yang ada
+    if [ -f "multipleforlinux.tar" ]; then
+        rm -f multipleforlinux.tar
+    fi
+    if [ -d "multipleforlinux" ]; then
+        rm -rf multipleforlinux
+    fi
     sleep 2
 
     echo "Node stopped and old files removed."
