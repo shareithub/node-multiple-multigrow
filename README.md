@@ -5,10 +5,15 @@ Source : multiple-network.gitbook.io (https://multiple-network.gitbook.io/multip
 
 Tutorial :
 git clone https://github.com/shareithub/node-multiple-multigrow.git
+
 cd node-multiple-multigrow
+
 bash run.sh
+
 How to check Node running :
+
 ps aux | grep multiple-node
+
 Feature script :
 - Auto stop & delete old Node
 Detail tutorial :
